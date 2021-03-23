@@ -1,21 +1,28 @@
 import * as React from "react"
 import { graphql } from "gatsby" 
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image" 
 import Layout from "../components/layout"
+import Seo from "../components/seo" 
+import PrevNext from "../components/prevNext" 
 import * as style from "../styles/singleBlog.module.scss"
  
-const SingleBlog = (props) => {   
-    return(
+const SingleBlog = ({ data, pageContext }) => {   
+    const { title, date, excerpt, image } = data.markdownRemark.frontmatter     
+    const { html } = data.markdownRemark     
+    const img = getImage(image.childImageSharp.gatsbyImageData)     
+    return (
         <Layout>
+            <Seo title={title} description={excerpt} /> 
             <div className={style.hero}>
-                <GatsbyImage image={props.data.markdownRemark.frontmatter.image.childImageSharp.gatsbyImageData} alt="blog-image" />
+                <GatsbyImage image={img} alt="blog-image" />
             </div>
             <div className={style.wrapper}>  
                 <div className={style.container}>               
-                    <h1>{props.data.markdownRemark.frontmatter.title}</h1>
-                    <p>{props.data.markdownRemark.frontmatter.date}</p> 
-                    <div dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }} /> 
+                    <h1>{title}</h1>
+                    <p>{date}</p> 
+                    <div dangerouslySetInnerHTML={{ __html: html }} /> 
                 </div> 
+                <PrevNext pageContext={pageContext} /> 
             </div>
         </Layout>                    
     )

@@ -3,7 +3,7 @@ Kindle本「はじめてつくるGatsbyサイト」
 
 [Amazonでみる](https://www.amazon.co.jp/dp/B08YX61888/ref=sr_1_1?dchild=1&qid=1615789723&refinements=p_27%3Amod728&s=digital-text&sr=1-1&text=mod728)
 
-第3章完了時点のソースコードです。
+第5章完了時点のソースコードです。
 
 アプリを起動するには、ファイルをダウンロード後にターミナルで`npm install`を実行してnpmパッケージをダウンロードする必要があります。
 
